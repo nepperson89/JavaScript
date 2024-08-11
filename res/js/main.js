@@ -1,0 +1,1 @@
+document.write('JavaSript saids "Hello!"');
