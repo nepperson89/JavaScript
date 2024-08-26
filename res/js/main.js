@@ -1,20 +1,30 @@
-// Input for the user's first name
-let Fname = prompt("What is your first name?");
+// For loop that counts from 0 to 10 and checks if the number is odd or even
+for (let i = 0; i <= 10; i++) {
+    if (i % 2 === 0) {
+        document.write(`<p>Count ${i} is even</p>`);
+    } else {
+        document.write(`<p>Count ${i} is odd</p>`);
+    }
+}
 
-// Welcome message for the user
-alert(`Welcome, ${Fname}!`);
+// Ask the user for a number between 5 and 20
+let myNum;
+myNum = parseInt(prompt("Enter a number between 5 and 20:"));
 
-// Stored value for Pi
-const piValue = 3.1415926;
+// Do While loop that counts from 1 to myNum
+let counter = 1;
+do {
+    document.write(`<p>Count: ${counter}</p>`);
+    counter++;
+} while (counter <= myNum);
 
-// Input for the user's favorite number
-let myFavNum = prompt("What is your favorite number?");
+// Array of subjects
+const subjects = ["Accounting", "Algebra", "Programming", "Art", "Data Analytics"];
 
-// Convert the user input to a number type
-myFavNum = parseFloat(myFavNum);
+// Display array values using forEach
+subjects.forEach(subject => {
+    document.write(`<p>Subject: ${subject}</p>`);
+});
 
-// Calculate the area of a circle with the user’s favorite number
-let myArea = piValue * (myFavNum * myFavNum);
-
-// Display the contents of each variable in a message
-document.write(`Hello ${Fname}, you entered ${myFavNum} as your favorite number. If that was the radius of a circle, the circle's area would be ${myArea}.`);
+// Display array values separated by commas
+document.write(`<p>Subjects: ${subjects.join(", ")}</p>`);
