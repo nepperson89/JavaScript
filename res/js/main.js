@@ -1,30 +1,49 @@
-// For loop that counts from 0 to 10 and checks if the number is odd or even
-for (let i = 0; i <= 10; i++) {
-    if (i % 2 === 0) {
-        document.write(`<p>Count ${i} is even</p>`);
+// Function to verify service quality
+function validateServiceQuality(quality) {
+    const validQualities = ['great', 'ok', 'poor'];
+    if (validQualities.includes(quality.toLowerCase())) {
+        return true;
     } else {
-        document.write(`<p>Count ${i} is odd</p>`);
+        alert("Invalid service quality entered. Please enter 'great', 'ok', or 'poor'.");
+        return false;
     }
 }
 
-// Ask the user for a number between 5 and 20
-let myNum;
-myNum = parseInt(prompt("Enter a number between 5 and 20:"));
+// Function to verify service amount
+function validateServiceAmount(amount) {
+    if (amount >= 5.00 && amount <= 500.00) {
+        return true;
+    } else {
+        alert("Invalid service amount entered. Please enter a value between $5.00 and $500.00.");
+        return false;
+    }
+}
 
-// Do While loop that counts from 1 to myNum
-let counter = 1;
-do {
-    document.write(`<p>Count: ${counter}</p>`);
-    counter++;
-} while (counter <= myNum);
+// Function to calculate the tip amount
+function calculateTip(amount, quality) {
+    let tipPercentage;
+    switch (quality.toLowerCase()) {
+        case 'great':
+            tipPercentage = 0.20;
+            break;
+        case 'ok':
+            tipPercentage = 0.15;
+            break;
+        case 'poor':
+            tipPercentage = 0.10;
+            break;
+        default:
+            tipPercentage = 0;
+    }
+    return amount * tipPercentage;
+}
 
-// Array of subjects
-const subjects = ["Accounting", "Algebra", "Programming", "Art", "Data Analytics"];
-
-// Display array values using forEach
-subjects.forEach(subject => {
-    document.write(`<p>Subject: ${subject}</p>`);
-});
-
-// Display array values separated by commas
-document.write(`<p>Subjects: ${subjects.join(", ")}</p>`);
+// Main script
+let serviceAmount = parseFloat(prompt("Enter the dollar amount of the service:"));
+if (validateServiceAmount(serviceAmount)) {
+    let serviceQuality = prompt("Enter the service quality (great, ok, poor):");
+    if (validateServiceQuality(serviceQuality)) {
+        let tipAmount = calculateTip(serviceAmount, serviceQuality);
+        document.write(`For a service amount of $${serviceAmount.toFixed(2)}, a tip of $${tipAmount.toFixed(2)} is recommended for ${serviceQuality} service.`);
+    }
+}
