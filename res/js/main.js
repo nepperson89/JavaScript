@@ -4,9 +4,9 @@ document.write("<h3>Simple Object</h3>");
 let myDog = new Object();
 myDog.name = "Scooby-Doo";
 myDog.breed = "Great Dane";
-myDog.show = "Scooby-Doo, Where Are You!";
+myDog.show = "Scooby-Doo, Where Are You";
 myDog.role = "I am a Crime-solving dog in a mystery-solving gang";
-myDog.mySound = "I’m scared but I’m always ready to help!";
+myDog.mySound = "I’m scared but I’m always ready to help";
   
 // Method to display the dog's description
 myDog.description = function() {
@@ -37,9 +37,9 @@ document.write("<h3>Simple Constructor</h3>");
 let myDogConst = new Dog(
   "Scooby-Doo", 
   "Great Dane", 
-  "Scooby-Doo, Where Are You!", 
+  "Scooby-Doo, Where Are You", 
   "I am a Crime-solving dog in a mystery-solving gang", 
-  "I’m scared but I’m always ready to help!", 
+  "I’m scared but I’m always ready to help", 
   true
 );
 
