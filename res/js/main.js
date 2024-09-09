@@ -16,7 +16,6 @@ myDog.description = function() {
 // Calling the description method
 myDog.description();
 
-
 // Constructor function to create a new dog object
 function Dog(name, breed, show, role, mySound, canTalk) {
   this.name = name;
