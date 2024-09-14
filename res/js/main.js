@@ -1,22 +1,6 @@
-document.write("<h3>Simple Object</h3>");
+document.write("<h3>Dog Constructor with Can Talk Check</h3>");
 
-// Creating a literal object named myDog
-let myDog = new Object();
-myDog.name = "Scooby-Doo";
-myDog.breed = "Great Dane";
-myDog.show = "Scooby-Doo, Where Are You";
-myDog.role = "I am a Crime-solving dog in a mystery-solving gang";
-myDog.mySound = "I’m scared but I’m always ready to help";
-  
-// Method to display the dog's description
-myDog.description = function() {
-  document.write(`<p>Hello, my name is <b>${myDog.name}</b>, when I bark <b>${myDog.mySound}</b>. I starred in the tv show <b>${myDog.show}</b>. My character was a <b>${myDog.breed}</b>. <b>${myDog.role}</b>.<p>`);
-};
-
-// Calling the description method
-myDog.description();
-
-// Constructor function to create a new dog object
+// Constructor function to create new dog objects
 function Dog(name, breed, show, role, mySound, canTalk) {
   this.name = name;
   this.breed = breed;
@@ -25,23 +9,57 @@ function Dog(name, breed, show, role, mySound, canTalk) {
   this.mySound = mySound;
   this.canTalk = canTalk;
 
-  // Method to display the dog's greeting
-  Dog.prototype.myGreeting = function() {
-    document.write(`<p>Hello, my name is <b>${this.name}</b>, when I bark <b>${this.mySound}</b>. I starred in the tv show <b>${this.show}</b>. My character was a <b>${this.breed}</b>. <b>${this.role}</b>.<p>`);
+  // Method to display the dog's description and whether it can talk
+  this.myGreeting = function () {
+    let talkMessage = this.canTalk ? "I can talk!" : "I cannot talk.";
+    document.write(`<p>Hello, my name is <b>${this.name}</b> and <b>${talkMessage}</b></p>`);
   };
 }
 
-document.write("<h3>Simple Constructor</h3>");
-
-// Creating a new dog object using the constructor
-let myDogConst = new Dog(
-  "Scooby-Doo", 
-  "Great Dane", 
-  "Scooby-Doo, Where Are You", 
-  "I am a Crime-solving dog in a mystery-solving gang", 
-  "I’m scared but I’m always ready to help", 
+// Creating two fictional dog objects
+let brian = new Dog(
+  "Brian", 
+  "Labrador Retriever", 
+  "Family Guy", 
+  "I am a witty and sarcastic family dog", 
+  "I have a deep voice and speak english", 
   true
 );
 
-// Calling the myDogConst constructor
-myDogConst.myGreeting();
+let snoopy = new Dog(
+  "Snoopy", 
+  "Beagle", 
+  "Peanuts", 
+  "I am Charlie Brown’s pet dog with a great imagination", 
+  "I think creatively but cannot talk", 
+  false
+);
+
+// Storing the dog objects in an array
+let dogList = [brian, snoopy];
+
+// Function to display each property and value using a for...in loop
+function displayDogProperties(dog) {
+  document.write(`<h3>Information about <b>${dog.name}</b></h3>`);
+  for (let property in dog) {
+    if (typeof dog[property] !== "function") {
+      document.write(`<p><b>${property}:</b> ${dog[property]}</p>`);
+    }
+  }
+}
+
+// Prompt the user to select a dog
+let selectedDogName = prompt("Please select a dog: Brian or Snoopy");
+
+// Find the selected dog in the list
+let selectedDog = dogList.find(dog => dog.name.toLowerCase() === selectedDogName.toLowerCase());
+
+if (selectedDog) {
+  // Call the myGreeting method to display the greeting message
+  selectedDog.myGreeting();
+  // Display the dog's properties
+  displayDogProperties(selectedDog);
+} else {
+  // Display error message if the dog is not found
+  document.write(`<p style="color:red;">Error: The dog "${selectedDogName}" does not exist in the list.</p>`);
+}
